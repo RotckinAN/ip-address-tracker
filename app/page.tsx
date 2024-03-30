@@ -5,18 +5,18 @@ import Header from "@/app/components/Header";
 const Map = dynamic(() => import("@/app/components/Map"), {
   ssr: false,
   loading: () => (
-    <section className="h-full max-h-[700px] w-full">
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    </section>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+        width: "100%",
+        maxHeight: 700,
+      }}
+    >
+      <CircularProgress />
+    </Box>
   ),
 });
 
