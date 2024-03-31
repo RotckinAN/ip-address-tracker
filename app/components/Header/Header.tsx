@@ -31,10 +31,10 @@ const Header = () => {
   };
 
   return (
-    <section className='relative flex h-[280px] w-full flex-col items-center justify-evenly bg-[url("/images/pattern-bg-desktop.png")] bg-cover bg-center bg-no-repeat pb-[82px]'>
+    <section className='mobile:bg-[url("/images/pattern-bg-desktop.png")] tablet:pb-[82px] mobile:h-[280px] mobile:min-h-[280px] relative flex h-[300px] min-h-[300px] w-full flex-col items-center justify-evenly bg-[url("/images/pattern-bg-mobile.png")] bg-cover bg-center bg-no-repeat pb-[32px] sm:pb-[42px]'>
       <Checkbox checked={isIpAutomatically} onChange={handleCheckboxChange} />
 
-      <h1 className="text-3xl font-medium tracking-wide text-white">
+      <h1 className="tablet:mt-4 mt-2 text-center text-3xl font-medium tracking-wide text-white ">
         IP Address Tracker
       </h1>
       <Input setIsIpValid={setIsIpValid} disabled={isIpAutomatically} />

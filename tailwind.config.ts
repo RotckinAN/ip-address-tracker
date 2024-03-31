@@ -13,6 +13,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      margin: {
+        "18": "68px",
+      },
+      screens: {
+        "1xl": "1440px",
+        tablet: "900px",
+        mobile: "375px",
+      },
     },
     fontFamily: {
       rubik: ["var(--font-rubik)"],

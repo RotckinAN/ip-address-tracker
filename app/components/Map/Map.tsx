@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  TileLayer,
+  useMap,
+  ZoomControl,
+} from "react-leaflet";
 import { useAppSelector } from "@/app/core/redux/hooks";
 import "leaflet/dist/leaflet.css";
 import markerIcon from "@/app/components/Map/markerIcon";
@@ -30,15 +36,17 @@ const Map = () => {
   }, [ipify]);
 
   return (
-    <section className="h-full max-h-[700px] w-full">
+    <section className="h-full max-h-full w-full xl:max-h-[700px]">
       {position && (
         <MapContainer
           center={position}
           zoom={16}
           scrollWheelZoom={false}
           className="h-full w-full"
+          zoomControl={false}
         >
           <ChangeView center={position} zoom={16} />
+          <ZoomControl position="bottomleft" />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
