@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - IP Address Tracker Challenge
 
-## Getting Started
+![Design preview for the Shortly URL shortening API coding challenge](./public/images/desktop-preview.jpg)
 
-First, run the development server:
+## Welcome! 👋
+Приложение выполнено в рамках челенджа проекта [Frontend Mentor](https://www.frontendmentor.io/?ref=challenge) ***"IP Address Tracker"***. <br/>
+С готовым вариантом приложения можно ознакомиться [здесь](https://ip-address-tracker-green-six-25.vercel.app/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Функциональность.
+Представляет собой одностраничное приложение (single page application) с возможностью поиска геоданных в зависимости от вручную введененного IP адреса. Также имеется возможность автоматического определения IP адреса и соответствующих геоданных.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Если введенный вручную IP адрес некорректный, то под полем появляется сообщение ошибки.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Техническая часть.
+Для запуска приложения использовать script `npm run dev`, открытое приложение доступно по адресу: **http://localhost:3000/**.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Приложение выполнено с использование фреймворка `Next.js`, языка `TypeScript` и адаптировано под все разрешения (десктопное и мобильное):
+- ***Desktop: 1440px и выше***;
+- ***Mobile: от 375px***.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Определение IP адреса, а также гоеданные по нему берутся с [IP Geolocation API by IPify](https://geo.ipify.org/). Карта выполнена при помощи библиотеки `React Leaflet`. Управления состоянием приложения осуществляется с помощью `Redux Toolkit`, работа с API запросами - `Redux Toolkit Query`. <br/>
+Каскадные таблицы стилей написаны с использованием библиотеки `Tailwind CSS`.
