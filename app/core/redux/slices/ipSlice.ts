@@ -6,6 +6,7 @@ import { ipifyApi } from "@/app/services/ipify-api";
 interface State {
   ipify: GeoRequest;
   automaticallyDeterminedIp: string | null;
+  isFetching: boolean;
 }
 
 const initialState: State = {
@@ -32,12 +33,17 @@ const initialState: State = {
     isp: null,
   },
   automaticallyDeterminedIp: null,
+  isFetching: false,
 };
 
 export const ipSlice = createSlice({
   name: "ipify",
   initialState,
-  reducers: {},
+  reducers: {
+    setIsFetching: (state, { payload }) => {
+      state.isFetching = payload;
+    },
+  },
   extraReducers: (build) => {
     build.addMatcher(
       ipifyGeoApi.endpoints?.getGeolocation.matchFulfilled,
@@ -53,5 +59,7 @@ export const ipSlice = createSlice({
     );
   },
 });
+
+export const { setIsFetching } = ipSlice.actions;
 
 export default ipSlice.reducer;

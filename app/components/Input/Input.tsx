@@ -1,6 +1,8 @@
-import React, { Dispatch, useState } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import { isIP } from "is-ip";
 import { useLazyGetGeolocationQuery } from "@/app/services/ipify-geo-api";
+import { useAppDispatch } from "@/app/core/redux/hooks";
+import { setIsFetching } from "@/app/core/redux/slices/ipSlice";
 
 interface InputProps {
   setIsIpValid: Dispatch<React.SetStateAction<boolean>>;
@@ -8,6 +10,7 @@ interface InputProps {
 }
 
 const Input = ({ setIsIpValid, disabled }: InputProps) => {
+  const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState("");
 
   const [trigger, { isFetching }] = useLazyGetGeolocationQuery();
@@ -21,8 +24,12 @@ const Input = ({ setIsIpValid, disabled }: InputProps) => {
     }
   };
 
+  useEffect(() => {
+    dispatch(setIsFetching(isFetching));
+  }, [isFetching, dispatch]);
+
   return (
-    <div className="tablet:mt-0 -mt-12 flex w-11/12 sm:w-fit">
+    <div className="-mt-12 flex w-11/12 rounded-2xl shadow-xl sm:w-fit tablet:mt-0">
       <input
         className="w-full rounded-l-2xl px-6 py-4 font-rubik text-lg focus:outline-none sm:w-[500px]"
         type="text"

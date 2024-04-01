@@ -1,24 +1,10 @@
 import dynamic from "next/dynamic";
-import { Box, CircularProgress } from "@mui/material";
 import Header from "@/app/components/Header";
+import Progress from "@/app/components/Progress";
 
 const Map = dynamic(() => import("@/app/components/Map"), {
   ssr: false,
-  loading: () => (
-    <div className="h-full max-h-full w-full xl:max-h-[700px]">
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-          width: "100%",
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    </div>
-  ),
+  loading: () => <Progress />,
 });
 
 export default function Home() {
