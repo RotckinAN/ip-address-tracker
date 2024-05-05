@@ -37,14 +37,22 @@ const Map = () => {
 
   return (
     <section className="relative flex h-full max-h-full w-full items-center justify-center xl:max-h-[700px]">
-      {position ? (
-        <>
-          {isFetching && (
-            <div className="absolute z-[1005] h-full max-h-full w-full backdrop-blur-xl xl:max-h-[700px]">
-              <Progress />
-            </div>
-          )}
+      {isFetching && (
+        <div className="absolute z-[1005] h-full max-h-full w-full backdrop-blur-xl xl:max-h-[700px]">
+          <Progress />
+        </div>
+      )}
 
+      {!position && !isFetching && (
+        <h6 className="z-[1011] w-3/4 rounded-xl bg-[#5365C9] p-3 text-center text-xl font-medium text-white shadow-2xl tablet:w-2/5 tablet:rounded-2xl tablet:p-5 tablet:text-2xl">
+          You need to enter the IP address in the input field or put the
+          checkbox in the enabled position to automatically determine the IP
+          address
+        </h6>
+      )}
+
+      {position && (
+        <>
           <MapContainer
             center={position}
             zoom={16}
@@ -61,12 +69,6 @@ const Map = () => {
             <Marker position={position} icon={markerIcon} />
           </MapContainer>
         </>
-      ) : (
-        <h6 className="z-[1011] w-3/4 rounded-xl bg-[#5365C9] p-3 text-center text-xl font-medium text-white shadow-2xl tablet:w-2/5 tablet:rounded-2xl tablet:p-5 tablet:text-2xl">
-          You need to enter the IP address in the input field or put the
-          checkbox in the enabled position to automatically determine the IP
-          address
-        </h6>
       )}
     </section>
   );

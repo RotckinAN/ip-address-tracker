@@ -16,8 +16,9 @@ const Header = () => {
   const { automaticallyDeterminedIp } = useAppSelector((state) => state.ipify);
 
   const dispatch = useAppDispatch();
-  const [ipTrigger] = useLazyGetIpQuery();
-  const [geoLocationTrigger, { isFetching }] = useLazyGetGeolocationQuery();
+  const [ipTrigger, { isFetching: isGetIpQueryFetching }] = useLazyGetIpQuery();
+  const [geoLocationTrigger, { isFetching: isGetGeolocationFetching }] =
+    useLazyGetGeolocationQuery();
 
   useEffect(() => {
     if (isIpAutomatically) ipTrigger();
@@ -29,8 +30,8 @@ const Header = () => {
   }, [automaticallyDeterminedIp, geoLocationTrigger, isIpAutomatically]);
 
   useEffect(() => {
-    dispatch(setIsFetching(isFetching));
-  }, [isFetching, dispatch]);
+    dispatch(setIsFetching(isGetGeolocationFetching || isGetIpQueryFetching));
+  }, [isGetGeolocationFetching, isGetIpQueryFetching, dispatch]);
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsIpAutomatically(event.target.checked);
